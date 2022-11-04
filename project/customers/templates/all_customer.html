@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+{{ super() }}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<style type="text/css">
+  .important {
+    color: #336699;
+  }
+</style>
+{% endblock %}
+{% block content %}
+<style>
+  .btn {
+    margin-bottom: 10px;
+  }
+  .card{
+    min-width: 180px;
+  }
+</style>
+<h1>All customers</h1>
+<p class="important">
+<div class="row row-cols-1 row-cols-md-5 g-4">
+  {%- if count_customers > 0  %}
+  {% for customer in customers_list %}
+  <div class="col">
+    <div class="card" >
+      <img src="{{url_for('static', filename='contact.jpeg')}}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">ID : {{ customer.customer_id}}</p>
+        <p class="card-text">Name : {{ customer.customer_name}}</p>
+        <div class="card-text dropdown">
+          <p class=" dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"> More Information</p>
+          <ul class="dropdown-menu">
+            <li><p class="dropdown-item" >Phone : {{customer.phone}}</p></li>
+            <li><p class="dropdown-item" >Email : {{customer.email}}</p></li>
+            <li><p class="dropdown-item" >Address : {{customer.address}}</p></li>
+            <li><p class="dropdown-item" >Date of Birth : {{customer.bdate}}</p></li>
+            <li><p class="dropdown-item" >Loans : {{customer.loans}}</p></li>
+          </ul>
+        </div>
+       <br>
+
+       <a class="btn btn-success"
+       href="http://127.0.0.1:5000/customers/all_customers/{{customer.customer_id}}">Show All</a>
+        <a class="btn btn-success" href="http://127.0.0.1:5000/customers/upload_customer/{{customer.customer_id}}">Modify</a>
+        <a class="btn btn-success" 
+          href="http://127.0.0.1:5000/customers/del_customer/{{customer.customer_id}}">del</a>
+
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  {%- else %}
+    <div class="col">
+        <div class="card">
+            <img src="{{url_for('static', filename='contact.jpeg')}}" class="card-img-top">
+            <div class="card-body">
+                <p class="card-text">You don't have customers</p>
+                <a class="btn btn-success" href="http://127.0.0.1:5000/customers/add_customer/">Add a Customer</a>
+                
+            </div>
+        </div>
+    </div>
+    {%- endif %}
+
+  {% endblock %}

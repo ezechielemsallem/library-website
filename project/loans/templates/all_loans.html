@@ -1,0 +1,138 @@
+{% extends "layout.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+{{ super() }}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<style type="text/css">
+    .important {
+        color: #336699;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<style>
+    .btn {
+       margin-bottom: 10px;
+     }
+     .card{
+       min-width: 180px;
+     }
+    
+   </style>
+<h1>Loans Active </h1><br>
+<p class="important">
+<div class="row row-cols-1 row-cols-md-6 g-4">
+    {%- if count_loans_active > 0  %}
+    {%- for loan in loans_active %}
+    <div class="col">
+        <div class="card">
+            <img src="{{url_for('static', filename='loan.jpeg')}}" class="card-img-top">
+            <div class="card-body">
+                <p class="card-text">ID : {{ loan.loans_id}}</p>
+                <p class="card-text">Customer :{{ loan.customers.customer_name}}</p>
+                <p class="card-text">Book : {{ loan.books.book_name}}</p>
+                <p class="card-text">Loan Date : {{ loan.loandate}}</p>
+                <p class="card-text">Return Date : {{ loan.returndate}}</p>
+                <a class="btn btn-success" href="http://127.0.0.1:5000/loans/upload_loan/{{loan.loans_id}}">Modify</a>
+                <a class="btn btn-success" onclick="myFunction()"
+                    href="http://127.0.0.1:5000/loans/del_loan/{{loan.loans_id}}">del</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {%- else %}
+    <div class="col">
+        <div class="card">
+            <img src="{{url_for('static', filename='loan.jpeg')}}" class="card-img-top">
+            <div class="card-body">
+                <p class="card-text">You don't have  active loans</p>
+                <a class="btn btn-success" href="http://127.0.0.1:5000/loans/add_loan/">Add a loan</a>
+                
+            </div>
+        </div>
+    </div>
+    {%- endif %}
+</div>
+<br>
+
+<h1>Late Loans</h1><br>
+<p class="important">
+<div class="row row-cols-1 row-cols-md-6 g-4"> 
+    {%- if count_loans_late > 0  %}
+    {%- for loan in loans_late %}
+    <div class="col">
+        <div class="card">
+            <img src="{{url_for('static', filename='loan.jpeg')}}" class="card-img-top">
+            <div class="card-body">
+                <p class="card-text">ID : {{ loan.loans_id}}</p>
+                <p class="card-text">Customer :{{ loan.customers.customer_name}}</p>
+                <p class="card-text">Book : {{ loan.books.book_name}}</p>
+                <p class="card-text">Loan Date : {{ loan.loandate}}</p>
+                <p class="card-text">Return Date : {{ loan.returndate}}</p>
+                <a class="btn btn-success" href="http://127.0.0.1:5000/loans/upload_loan/{{loan.loans_id}}">Modify</a>
+                <a class="btn btn-success"
+                    href="http://127.0.0.1:5000/loans/del_loan/{{loan.loans_id}}">del</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {%- else %}
+    <div class="col">
+        <div class="card">
+            <img src="{{url_for('static', filename='loan.jpeg')}}" class="card-img-top">
+            <div class="card-body">
+                <p class="card-text">You don't have late loan</p>
+            </div>
+        </div>
+    </div>
+    {%- endif %}
+
+</div><br>
+
+<h1>All Loans </h1><br>
+<table style="width:100%" class="table">
+    <thead class="table-dark">
+        <tr>
+            <th>loans ID</th>
+            <th>Customer</th>
+            <th>Book</th>
+            <th>Loandate</th>
+            <th>Returndate</th>
+            <th>Returned</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    {%- if count_loans > 0  %}
+    {%- for loan in all_Loans %}
+    <tbody>
+        <tr>
+            <td>{{ loan.loans_id}}</td>
+            <td>{{ loan.customer}}</td>
+            <td>{{ loan.book}}</td>
+            <td>{{ loan.loandate}}</td>
+            <td>{{ loan.returndate}}</td>
+            <td>{{ loan.returned}}</td>
+            <td>
+                <a class="btn btn-success" href="http://127.0.0.1:5000/loans/return_book/{{loan.loans_id}}">Return a Book</a>
+                <a class="btn btn-success" href="http://127.0.0.1:5000/loans/upload_loan/{{loan.loans_id}}">Modify</a>
+                <a class="btn btn-danger" onclick="myFunction()"
+                    href="http://127.0.0.1:5000/loans/del_loan/{{loan.loans_id}}">del</a>
+            </td>
+        </tr>
+    </tbody>
+    {% endfor %}
+    {%- else %}
+    <tbody>
+        <tr>
+            <td colspan="6">We don't have loans </td>
+            <td>
+                <a class="btn btn-success" href="http://127.0.0.1:5000/loans/add_loan/">Add a loan</a>
+            </td>
+        </tr>
+    </tbody>
+    {%- endif %}
+
+</table>
+
+{% endblock %}
