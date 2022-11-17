@@ -34,9 +34,9 @@
                 <p class="card-text">Book : {{ loan.books.book_name}}</p>
                 <p class="card-text">Loan Date : {{ loan.loandate}}</p>
                 <p class="card-text">Return Date : {{ loan.returndate}}</p>
-                <a class="btn btn-success" href="http://127.0.0.1:5000/loans/upload_loan/{{loan.loans_id}}">Modify</a>
+                <a class="btn btn-success" href="https://my-library-49wh.onrender.com/loans/upload_loan/{{loan.loans_id}}">Modify</a>
                 <a class="btn btn-success" onclick="myFunction()"
-                    href="http://127.0.0.1:5000/loans/del_loan/{{loan.loans_id}}">del</a>
+                    href="https://my-library-49wh.onrender.com/loans/del_loan/{{loan.loans_id}}">del</a>
             </div>
         </div>
     </div>
@@ -47,7 +47,7 @@
             <img src="{{url_for('static', filename='loan.jpeg')}}" class="card-img-top">
             <div class="card-body">
                 <p class="card-text">You don't have  active loans</p>
-                <a class="btn btn-success" href="http://127.0.0.1:5000/loans/add_loan/">Add a loan</a>
+                <a class="btn btn-success" href="https://my-library-49wh.onrender.com/loans/add_loan/">Add a loan</a>
                 
             </div>
         </div>
@@ -70,9 +70,9 @@
                 <p class="card-text">Book : {{ loan.books.book_name}}</p>
                 <p class="card-text">Loan Date : {{ loan.loandate}}</p>
                 <p class="card-text">Return Date : {{ loan.returndate}}</p>
-                <a class="btn btn-success" href="http://127.0.0.1:5000/loans/upload_loan/{{loan.loans_id}}">Modify</a>
+                <a class="btn btn-success" href="https://my-library-49wh.onrender.com/loans/upload_loan/{{loan.loans_id}}">Modify</a>
                 <a class="btn btn-success"
-                    href="http://127.0.0.1:5000/loans/del_loan/{{loan.loans_id}}">del</a>
+                    href="https://my-library-49wh.onrender.com/loans/del_loan/{{loan.loans_id}}">del</a>
             </div>
         </div>
     </div>
@@ -114,10 +114,10 @@
             <td>{{ loan.returndate}}</td>
             <td>{{ loan.returned}}</td>
             <td>
-                <a class="btn btn-success" href="http://127.0.0.1:5000/loans/return_book/{{loan.loans_id}}">Return a Book</a>
-                <a class="btn btn-success" href="http://127.0.0.1:5000/loans/upload_loan/{{loan.loans_id}}">Modify</a>
+                <a class="btn btn-success" href="https://my-library-49wh.onrender.com/loans/return_book/{{loan.loans_id}}">Return a Book</a>
+                <a class="btn btn-success" href="https://my-library-49wh.onrender.com/loans/upload_loan/{{loan.loans_id}}">Modify</a>
                 <a class="btn btn-danger" onclick="myFunction()"
-                    href="http://127.0.0.1:5000/loans/del_loan/{{loan.loans_id}}">del</a>
+                    href="https://my-library-49wh.onrender.com/loans/del_loan/{{loan.loans_id}}">del</a>
             </td>
         </tr>
     </tbody>
@@ -127,7 +127,7 @@
         <tr>
             <td colspan="6">We don't have loans </td>
             <td>
-                <a class="btn btn-success" href="http://127.0.0.1:5000/loans/add_loan/">Add a loan</a>
+                <a class="btn btn-success" href="https://my-library-49wh.onrender.com/loans/add_loan/">Add a loan</a>
             </td>
         </tr>
     </tbody>

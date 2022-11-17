@@ -43,7 +43,7 @@ def del_customer(ind=-1):
                 db.session.commit()
                 return redirect(url_for('customers.all_customers'))
         except : 
-            return render_template('cant_delete_customer.html', link = "http://127.0.0.1:5000/customers/all_customers/")
+            return render_template('cant_delete_customer.html', link = "https://my-library-49wh.onrender.com/customers/all_customers/")
 
 
 @customers.route("/search_customer/", methods=['GET', 'POST'])
@@ -53,7 +53,7 @@ def search_customer():
        my_user = Customers.query.filter_by(customer_name= customer).first()
        if my_user:
         return  render_template('customer.html',customer= my_user)
-       return render_template('not_found.html', object =customer, link = "http://127.0.0.1:5000/customers/all_customers/")
+       return render_template('not_found.html', object =customer, link = "https://my-library-49wh.onrender.com/customers/all_customers/")
     return render_template('search_customer.html')
 
 @customers.route("/upload_customer/" ,methods=[ 'POST'])

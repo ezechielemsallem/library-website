@@ -66,7 +66,7 @@ def search_loan():
        my_user = Loans.query.filter_by(loans_id= loan).first() 
        if my_user:
         return  render_template('new_loan.html',loan= my_user)
-       return render_template('not_found.html', object =f'Loan number {loan}', link = "http://127.0.0.1:5000/loans/all_loans/")
+       return render_template('not_found.html', object =f'Loan number {loan}', link = "https://my-library-49wh.onrender.com/loans/all_loans/")
     return render_template('search_loan.html') 
 
 
