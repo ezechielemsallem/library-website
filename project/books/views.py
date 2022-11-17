@@ -41,7 +41,7 @@ def del_student(ind=-1):
             db.session.commit()
             return redirect(url_for('books.all_books')) 
         except:
-            return render_template('cant_delete_book.html' , link = "http://127.0.0.1:5000/books/all_books/")
+            return render_template('cant_delete_book.html' , link = "https://my-library-49wh.onrender.com/books/all_books/")
 
 
 #url for search book with his name 
@@ -52,7 +52,7 @@ def search_book():
        my_user = Books.query.filter_by(book_name= book).first()
        if my_user:
         return  render_template('book.html',book= my_user)
-       return  render_template('not_found.html', object =book, link = "http://127.0.0.1:5000/books/all_books/")
+       return  render_template('not_found.html', object =book, link = "https://my-library-49wh.onrender.com/books/all_books/")
     return render_template('search_book.html' )
 
 #url for modify information of book
